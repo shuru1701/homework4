@@ -1,10 +1,12 @@
 package johnson.demo;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageInfo;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +24,18 @@ public class App
 
     public static void main(String[] args) {
 
+    }
+    //分页显示
+    public PageInfo<String> getpagieValue(String hashname, int pagenumber, int pagesize)
+    {
+        Map<String,String> usermap=connectredis().hgetAll(hashname);
+        List list=new ArrayList();
+        for (String key : usermap.keySet())
+        {
+            list.add("key= " + key + " and value= " + usermap.get(key));
+        }
+        PageInfo<String> pageInfo=new PageInfo<String>(list,pagesize);
+        return pageInfo;
     }
 
     //hash添加值
