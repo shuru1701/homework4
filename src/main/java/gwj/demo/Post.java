@@ -1,4 +1,4 @@
-package johnson.demo;
+package.gwj.demo;
 
 
 public class Post {

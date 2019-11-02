@@ -1,4 +1,4 @@
-package johnson.demo;
+package gwj.demo;
 
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
